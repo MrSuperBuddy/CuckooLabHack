@@ -34,7 +34,6 @@ clean() {
 }
 
 clean_and_exit() {
-    if [[ $platform == "windows" ]]; then
         input "Press Enter to exit."
         read -s
     fi
@@ -136,7 +135,7 @@ set_tool_paths() {
             if [[ $(pwd) == "/home"* ]]; then
                 df . -h
                 if [[ $(lsblk -o label | grep -c "casper-rw") == 1 || $(lsblk -o label | grep -c "persistence") == 1 ]]; then
-                    log "Detected iOS-OTA-Downgrader running on persistent storage."
+                    log "Detected CuckooLabHack running on persistent storage."
                 else
                     warn "Detected CuckooLabHack running on temporary storage."
                     print "* You may run out of space and get errors during the creating the hack."
@@ -240,11 +239,11 @@ install_depends() {
     rm "../resources/firstrun" 2>/dev/null
 
     if [[ $platform == "linux" ]]; then
-        print "* iOS-OTA-Downgrader will be installing dependencies from your distribution's package manager"
+        print "* CuuckooLabHack will be installing dependencies from your distribution's package manager"
         print "* Enter your user password when prompted"
         pause
     elif [[ $platform == "windows" ]]; then
-        print "* iOS-OTA-Downgrader will be installing dependencies from MSYS2"
+        print "* CuckooLabHack will be installing dependencies from MSYS2"
         print "* You may have to run the script more than once. If the prompt exits on its own, just run restore.cmd again"
         pause
     fi
@@ -313,7 +312,7 @@ version_check() {
         log ".git directory and git_hash file not found, cannot determine version."
         if [[ $no_version_check != 1 ]]; then
             error "Your copy of CuckooLabHack is downloaded incorrectly. Do not use the \"Code\" button in GitHub." \
-            "* Please download iOS-OTA-Downgrader using git clone or from GitHub releases: https://github.com/MrSuperBuddy/CuckooLabHack/releases"
+            "* Please download CuckooLabHack using git clone or from GitHub releases: https://github.com/MrSuperBuddy/CuckooLabHack/releases"
         fi
     fi
 
@@ -404,7 +403,7 @@ device_get_info() {
     device_fw_dir="../resources/firmware/$device_type"
     device_model="$(cat $device_fw_dir/hwmodel)"
     if [[ -z $device_model ]]; then
-        print "* Device: $device_type in $device_mode mode"
+        print "* Device: $device_type"
         print "* iOS Version: $device_vers"
         print "* ECID: $device_ecid"
         echo
