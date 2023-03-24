@@ -11,5 +11,7 @@ How to use it:
  8.Then, go to the documents, delete the file charcterStatus.plist (ginaStatus.plist)
  9.Move the plist created by CuckooLabHack
  
+ If you using windows, please, install msys2
+ 
  Have a nice day ;)
 Copyright: ©2021 Mr.Super Buddy
